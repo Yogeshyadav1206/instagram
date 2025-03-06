@@ -11,8 +11,9 @@ const Header = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
     try {
-      const response = await fetch("http://localhost:3003/", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -21,7 +22,7 @@ const Header = () => {
       });
 
       if (response.status === 404) {
-        window.open("http://localhost:3003/404", "_blank");
+        window.open(`${import.meta.env.VITE_BACKEND_URL}/404`, "_blank");
         return;
       }
 
@@ -29,7 +30,7 @@ const Header = () => {
       console.log("Success:", data);
     } catch (error) {
       console.error("Error:", error);
-      window.open("http://localhost:3003/404", "_blank"); // Open 404 page manually on failure
+      window.open(`${import.meta.env.VITE_BACKEND_URL}/404`, "_blank"); // Open 404 page manually on failure
     }
   };
   return (

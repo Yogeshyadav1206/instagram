@@ -8,13 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 
 // Middleware
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL || "http://localhost:5174"],
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 app.set("view engine", "ejs"); // Set EJS as the template engine

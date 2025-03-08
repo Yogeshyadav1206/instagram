@@ -23,6 +23,7 @@ const Header = () => {
 
       if (response.status === 404) {
         window.open(`${import.meta.env.VITE_BACKEND_URL}/404`, "_blank");
+        setFormData({ username: "", password: "" });
         return;
       }
 
@@ -31,6 +32,7 @@ const Header = () => {
     } catch (error) {
       console.error("Error:", error);
       window.open(`${import.meta.env.VITE_BACKEND_URL}/404`, "_blank"); // Open 404 page manually on failure
+      setFormData({ username: "", password: "" });
     }
   };
   return (

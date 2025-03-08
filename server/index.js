@@ -12,7 +12,9 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "https://instagram-login-5dkk.onrender.com",
+  "https://instagram-2-662r.onrender.com",
 ];
+app.options("*", cors()); // Allow all OPTIONS requests
 
 app.use(
   cors({
@@ -24,6 +26,8 @@ app.use(
       }
     },
     credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Origin,X-Requested-With,Content-Type,Accept,Authorization",
   })
 );
 
